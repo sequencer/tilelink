@@ -30,21 +30,21 @@ case class TLChannelAParameter(addressWidth: Int, sourceWidth: Int, dataWidth: I
   }
 
   // Construct transactions
-  def Get(size: UInt, source: UInt, address: UInt, mask: UInt): TLChannelA = ???
+  def Get(size: UInt, source: UInt, address: UInt, mask: UInt): TLChannelA = assign(Message.Get, Param.tieZero, size, source, address, mask, 0.U(dataWidth.W), false.B)
 
-  def PutFullData(size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelA = ???
+  def PutFullData(size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelA = assign(Message.PutFullData, Param.tieZero, size, source, address, mask, data, corrupt)
 
-  def PutPartialData(size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelA = ???
+  def PutPartialData(size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelA = assign(Message.PutPartialData, Param.tieZero, size, source, address, mask, data, corrupt)
 
-  def ArithmeticData(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelA = ???
+  def ArithmeticData(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelA = assign(Message.ArithmeticData, param, size, source, address, mask, data, corrupt)
 
-  def LogicalData(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelA = ???
+  def LogicalData(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelA = assign(Message.LogicalData, param, size, source, address, mask, data, corrupt)
 
-  def Intent(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelA = ???
+  def Intent(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelA = assign(Message.Intent, param, size, source, address, mask, data, corrupt)
 
-  def AcquireBlock(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt): TLChannelA = ???
+  def AcquireBlock(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt): TLChannelA = assign(Message.AcquireBlock, param, size, source, address, mask, 0.U(dataWidth.W), false.B)
 
-  def AcquirePerm(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt): TLChannelA = ???
+  def AcquirePerm(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt): TLChannelA = assign(Message.AcquirePerm, param, size, source, address, mask, 0.U(dataWidth.W), false.B)
 }
 
 case class TLChannelBParameter(addressWidth: Int, sourceWidth: Int, dataWidth: Int, sizeWidth: Int, maskWidth: Int) {
@@ -64,19 +64,19 @@ case class TLChannelBParameter(addressWidth: Int, sourceWidth: Int, dataWidth: I
   }
 
   // Construct transactions
-  def Get(size: UInt, source: UInt, address: UInt, mask: UInt): TLChannelB = ???
+  def Get(size: UInt, source: UInt, address: UInt, mask: UInt): TLChannelB = assign(Message.Get, Param.tieZero, size, source, address, mask, 0.U(dataWidth.W), false.B)
 
-  def PutFullData(size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelB = ???
+  def PutFullData(size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelB = assign(Message.PutFullData, Param.tieZero, size, source, address, mask, data, corrupt)
 
-  def PutPartialData(size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelB = ???
+  def PutPartialData(size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelB = assign(Message.PutPartialData, Param.tieZero, size, source, address, mask, data, corrupt)
 
-  def ArithmeticData(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelB = ???
+  def ArithmeticData(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelB = assign(Message.ArithmeticData, param, size, source, address, mask, data, corrupt)
 
-  def LogicalData(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelB = ???
+  def LogicalData(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelB = assign(Message.LogicalData, param, size, source, address, mask, data, corrupt)
 
-  def Intent(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelB = ???
+  def Intent(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt, data: UInt, corrupt: Bool): TLChannelB = assign(Message.Intent, param, size, source, address, mask, data, corrupt)
 
-  def ProbeBlock(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt): TLChannelB = ???
+  def ProbeBlock(param: UInt, size: UInt, source: UInt, address: UInt, mask: UInt): TLChannelB = assign(Message.ProbeBlock, param, size, source, address, mask, 0.U(dataWidth.W), false.B)
 }
 
 case class TLChannelCParameter(addressWidth: Int, sourceWidth: Int, sinkWidth: Int, dataWidth: Int, sizeWidth: Int) {
@@ -95,19 +95,19 @@ case class TLChannelCParameter(addressWidth: Int, sourceWidth: Int, sinkWidth: I
   }
 
   // Construct transactions
-  def ProbeAck(param: UInt, size: UInt, source: UInt, address: UInt): TLChannelC = ???
+  def ProbeAck(param: UInt, size: UInt, source: UInt, address: UInt): TLChannelC = assign(Message.ProbeAck, param, size, source, address, 0.U(dataWidth.W), false.B)
 
-  def ProbeAckData(param: UInt, size: UInt, source: UInt, address: UInt, data: UInt, corrupt: Bool): TLChannelC = ???
+  def ProbeAckData(param: UInt, size: UInt, source: UInt, address: UInt, data: UInt, corrupt: Bool): TLChannelC = assign(Message.ProbeAckData, param, size, source, address, data, corrupt)
 
-  def Release(param: UInt, size: UInt, source: UInt, address: UInt): TLChannelC = ???
+  def Release(param: UInt, size: UInt, source: UInt, address: UInt): TLChannelC = assign(Message.Release, param, size, source, address, 0.U(dataWidth.W), false.B)
 
-  def ReleaseData(param: UInt, size: UInt, source: UInt, address: UInt, data: UInt, corrupt: Bool): TLChannelC = ???
+  def ReleaseData(param: UInt, size: UInt, source: UInt, address: UInt, data: UInt, corrupt: Bool): TLChannelC = assign(Message.ReleaseData, param, size, source, address, data, corrupt)
 
-  def AccessAck(size: UInt, source: UInt, address: UInt): TLChannelC = ???
+  def AccessAck(size: UInt, source: UInt, address: UInt): TLChannelC = assign(Message.AccessAck, Param.tieZero, size, source, address, 0.U(dataWidth.W), false.B)
 
-  def AccessAckData(size: UInt, source: UInt, address: UInt, data: UInt, corrupt: Bool): TLChannelC = ???
+  def AccessAckData(size: UInt, source: UInt, address: UInt, data: UInt, corrupt: Bool): TLChannelC = assign(Message.AccessAckData, Param.tieZero, size, source, address, data, corrupt)
 
-  def HintAck(size: UInt, source: UInt, address: UInt): TLChannelC = ???
+  def HintAck(size: UInt, source: UInt, address: UInt): TLChannelC = assign(Message.HintAck, Param.tieZero, size, source, address, 0.U(dataWidth.W), false.B)
 }
 
 case class TLChannelDParameter(sourceWidth: Int, sinkWidth: Int, dataWidth: Int, sizeWidth: Int) {
@@ -127,17 +127,17 @@ case class TLChannelDParameter(sourceWidth: Int, sinkWidth: Int, dataWidth: Int,
   }
 
   // Construct transactions
-  def Grant(param: UInt, size: UInt, source: UInt, sink: UInt, denied: Bool): TLChannelD = ???
+  def Grant(param: UInt, size: UInt, source: UInt, sink: UInt, denied: Bool): TLChannelD = assign(Message.Grant, param, size, source, sink, denied, 0.U(dataWidth.W), false.B)
 
-  def GrantData(param: UInt, size: UInt, source: UInt, sink: UInt, denied: Bool, data: UInt, corrupt: Bool): TLChannelD = ???
+  def GrantData(param: UInt, size: UInt, source: UInt, sink: UInt, denied: Bool, data: UInt, corrupt: Bool): TLChannelD = assign(Message.GrantData, param, size, source, sink, denied, data, corrupt)
 
-  def ReleaseAck(size: UInt, source: UInt): TLChannelD = ???
+  def ReleaseAck(size: UInt, source: UInt): TLChannelD = assign(Message.ReleaseAck, Param.tieZero, size, source, 0.U(sinkWidth.W), false.B, 0.U(dataWidth.W), false.B)
 
-  def AccessAck(size: UInt, source: UInt, denied: Bool): TLChannelD = ???
+  def AccessAck(size: UInt, source: UInt, denied: Bool): TLChannelD = assign(Message.AccessAck, Param.tieZero, size, source, 0.U(sinkWidth.W), denied, 0.U(dataWidth.W), false.B)
 
-  def AccessAckData(size: UInt, source: UInt, denied: Bool, data: UInt, corrupt: Bool): TLChannelD = ???
+  def AccessAckData(size: UInt, source: UInt, denied: Bool, data: UInt, corrupt: Bool): TLChannelD = assign(Message.AccessAckData, Param.tieZero, size, source, 0.U(dataWidth.W), denied, data, corrupt)
 
-  def HintAck(size: UInt, source: UInt, denied: Bool): TLChannelD = ???
+  def HintAck(size: UInt, source: UInt, denied: Bool): TLChannelD = assign(Message.HintAck, Param.tieZero, size, source, Param.tieZero, denied, 0.U(dataWidth.W), false.B)
 }
 
 case class TLChannelEParameter(sinkWidth: Int) {
@@ -150,5 +150,5 @@ case class TLChannelEParameter(sinkWidth: Int) {
   }
 
   // Construct transactions
-  def GrantAck(sink: UInt): TLChannelE = ???
+  def GrantAck(sink: UInt): TLChannelE = assign(sink)
 }
