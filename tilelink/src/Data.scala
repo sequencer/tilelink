@@ -29,60 +29,47 @@ class TLBundle(val parameter: TLBundleParameter) extends Record {
 }
 
 class TLChannelA(val parameter: TLChannelAParameter) extends Bundle {
-  val address: UInt = UInt(parameter.addressWidth.W)
-  val source: UInt = UInt(parameter.sourceWidth.W)
-
+  // TODO: in spec, this is 'code' in spec
   val opcode: UInt = UInt(3.W)
   val param: UInt = UInt(3.W)
-
-  val data: UInt = UInt(parameter.dataWidth.W)
   val size: UInt = UInt(parameter.sizeWidth.W)
-
+  val source: UInt = UInt(parameter.sourceWidth.W)
+  val address: UInt = UInt(parameter.addressWidth.W)
   val mask: UInt = UInt(parameter.maskWidth.W)
-
+  val data: UInt = UInt(parameter.dataWidth.W)
   val corrupt: Bool = Bool()
 }
 
 class TLChannelB(val parameter: TLChannelBParameter) extends Bundle {
-  val address: UInt = UInt(parameter.addressWidth.W)
-  val source: UInt = UInt(parameter.sourceWidth.W)
-
   val opcode: UInt = UInt(3.W)
   val param: UInt = UInt(3.W)
-
-  val data: UInt = UInt(parameter.dataWidth.W)
   val size: UInt = UInt(parameter.sizeWidth.W)
-
+  val source: UInt = UInt(parameter.sourceWidth.W)
+  val address: UInt = UInt(parameter.addressWidth.W)
   val mask: UInt = UInt(parameter.maskWidth.W)
-
+  val data: UInt = UInt(parameter.dataWidth.W)
   val corrupt: Bool = Bool()
 }
 
 class TLChannelC(val parameter: TLChannelCParameter) extends Bundle {
-  val address: UInt = UInt(parameter.addressWidth.W)
-  val source: UInt = UInt(parameter.sourceWidth.W)
-  val sink: UInt = UInt(parameter.sinkWidth.W)
-
   val opcode: UInt = UInt(3.W)
   val param: UInt = UInt(3.W)
-
-  val data: UInt = UInt(parameter.dataWidth.W)
   val size: UInt = UInt(parameter.sizeWidth.W)
-
+  val source: UInt = UInt(parameter.sourceWidth.W)
+  val address: UInt = UInt(parameter.addressWidth.W)
+  val data: UInt = UInt(parameter.dataWidth.W)
   val corrupt: Bool = Bool()
 }
 
 class TLChannelD(val parameter: TLChannelDParameter) extends Bundle {
-  val source: UInt = UInt(parameter.sourceWidth.W)
-
   val opcode: UInt = UInt(3.W)
   val param: UInt = UInt(3.W)
-
-  val data: UInt = UInt(parameter.dataWidth.W)
   val size: UInt = UInt(parameter.sizeWidth.W)
-
-  val corrupt: Bool = Bool()
+  val source: UInt = UInt(parameter.sourceWidth.W)
+  val sink: UInt = UInt(parameter.sinkWidth.W)
   val denied: Bool = Bool()
+  val data: UInt = UInt(parameter.dataWidth.W)
+  val corrupt: Bool = Bool()
 }
 
 class TLChannelE(val parameter: TLChannelEParameter) extends Bundle {
