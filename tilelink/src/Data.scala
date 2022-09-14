@@ -19,11 +19,11 @@ class TLBundle(val parameter: TLBundleParameter) extends Record {
   def e: DecoupledIO[TLChannelE] = elements.getOrElse("e", throw new NoTLCException("e", parameter)).asInstanceOf[DecoupledIO[TLChannelE]]
 
   val elements: SeqMap[String, DecoupledIO[Bundle]] = SeqMap[String, DecoupledIO[Bundle]]() ++
-    Seq("a" -> DecoupledIO(new TLChannelA(parameter.a))) ++
-    parameter.b.map(p => "b" -> Flipped(DecoupledIO(new TLChannelB(p)))) ++
-    parameter.c.map(p => "c" -> DecoupledIO(new TLChannelC(p))) ++
-    Seq("d" -> Flipped(DecoupledIO(new TLChannelD(parameter.d)))) ++
-    parameter.e.map(p => "e" -> DecoupledIO(new TLChannelE(p)))
+    Seq("a" -> DecoupledIO(parameter.a.bundle())) ++
+    parameter.b.map(p => "b" -> Flipped(DecoupledIO(p.bundle()))) ++
+    parameter.c.map(p => "c" -> DecoupledIO(p.bundle())) ++
+    Seq("d" -> Flipped(DecoupledIO(parameter.d.bundle()))) ++
+    parameter.e.map(p => "e" -> DecoupledIO(p.bundle()))
 
   override def cloneType: this.type = new TLBundle(parameter).asInstanceOf[this.type]
 }
