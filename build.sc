@@ -1,6 +1,7 @@
 import mill._
 import mill.scalalib._
 import mill.scalalib.publish._
+import mill.scalalib.scalafmt._
 import coursier.maven.MavenRepository
 import $file.dependencies.cde.build
 import $file.dependencies.`berkeley-hardfloat`.build
@@ -60,9 +61,20 @@ object myrocketchip extends dependencies.`rocket-chip`.common.CommonRocketChip {
   override def scalacOptions = T { Seq("-Xsource:2.11", s"-Xplugin:${mychisel3.plugin.jar().path}", "-P:chiselplugin:genBundleElements") }
 }
 
-object tilelink extends common.TileLinkModule { m =>
+object tilelink extends common.TileLinkModule with ScalafmtModule { m =>
   def scalaVersion = T { v.scala }
   def rocketchipModule = myrocketchip
   def chisel3Module = Some(mychisel3)
   def chisel3PluginJar = T { Some(mychisel3.plugin.jar()) }
+}
+
+object busip extends common.BusIPModule { m =>
+  def scalaVersion = T { v.scala }
+  def tileLinkModule = tilelink
+}
+
+object diplomatic extends common.DiplomaticModule { m =>
+  def scalaVersion = T { v.scala }
+  def busIPModule = busip
+  def rocketchipModule = myrocketchip
 }
