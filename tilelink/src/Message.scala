@@ -1,11 +1,12 @@
 package tilelink
 
 import chisel3._
+import chisel3.internal.firrtl.Width
 /** TileLink Spec 1.8.1
   * Table 13
   */
 object Message {
-  private val width = 3.W
+  protected[tilelink] val width: Width = 3.W
   val PutFullData: UInt = 0.U(width)
   val PutPartialData: UInt = 1.U(width)
   val ArithmeticData: UInt = 2.U(width)

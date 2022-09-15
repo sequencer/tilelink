@@ -1,9 +1,10 @@
 package tilelink
 
 import chisel3._
+import chisel3.internal.firrtl.Width
 
 object Param {
-  private val width = 3.W
+  protected[tilelink] val width: Width = 3.W
   val tieZero: UInt = 0.U(width)
   /** TileLink Spec 1.8.1
     * Table 23

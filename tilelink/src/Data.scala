@@ -30,8 +30,8 @@ class TLBundle(val parameter: TLBundleParameter) extends Record {
 
 class TLChannelA(val parameter: TLChannelAParameter) extends Bundle {
   // TODO: in spec, this is 'code' in spec
-  val opcode: UInt = UInt(3.W)
-  val param: UInt = UInt(3.W)
+  val opcode: UInt = UInt(Message.width)
+  val param: UInt = UInt(Param.width)
   val size: UInt = UInt(parameter.sizeWidth.W)
   val source: UInt = UInt(parameter.sourceWidth.W)
   val address: UInt = UInt(parameter.addressWidth.W)
@@ -41,8 +41,8 @@ class TLChannelA(val parameter: TLChannelAParameter) extends Bundle {
 }
 
 class TLChannelB(val parameter: TLChannelBParameter) extends Bundle {
-  val opcode: UInt = UInt(3.W)
-  val param: UInt = UInt(3.W)
+  val opcode: UInt = UInt(Message.width)
+  val param: UInt = UInt(Param.width)
   val size: UInt = UInt(parameter.sizeWidth.W)
   val source: UInt = UInt(parameter.sourceWidth.W)
   val address: UInt = UInt(parameter.addressWidth.W)
@@ -52,8 +52,8 @@ class TLChannelB(val parameter: TLChannelBParameter) extends Bundle {
 }
 
 class TLChannelC(val parameter: TLChannelCParameter) extends Bundle {
-  val opcode: UInt = UInt(3.W)
-  val param: UInt = UInt(3.W)
+  val opcode: UInt = UInt(Message.width)
+  val param: UInt = UInt(Param.width)
   val size: UInt = UInt(parameter.sizeWidth.W)
   val source: UInt = UInt(parameter.sourceWidth.W)
   val address: UInt = UInt(parameter.addressWidth.W)
@@ -62,8 +62,8 @@ class TLChannelC(val parameter: TLChannelCParameter) extends Bundle {
 }
 
 class TLChannelD(val parameter: TLChannelDParameter) extends Bundle {
-  val opcode: UInt = UInt(3.W)
-  val param: UInt = UInt(3.W)
+  val opcode: UInt = UInt(Message.width)
+  val param: UInt = UInt(Param.width)
   val size: UInt = UInt(parameter.sizeWidth.W)
   val source: UInt = UInt(parameter.sourceWidth.W)
   val sink: UInt = UInt(parameter.sinkWidth.W)
