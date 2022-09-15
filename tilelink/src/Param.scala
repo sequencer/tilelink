@@ -5,9 +5,10 @@ import chisel3.internal.firrtl.Width
 
 object Param {
   protected[tilelink] val width: Width = 3.W
+
   val tieZero: UInt = 0.U(width)
-  /** TileLink Spec 1.8.1
-    * Table 23
+
+  /** TileLink Spec 1.8.1 Table 23
     */
   object Arithmetic {
     val MIN: UInt = 0.U(width)
@@ -17,8 +18,7 @@ object Param {
     val ADD: UInt = 4.U(width)
   }
 
-  /** TileLink Spec 1.8.1
-    * Table 25
+  /** TileLink Spec 1.8.1 Table 25
     */
   object Logical {
     val XOR: UInt = 0.U(width)
@@ -27,16 +27,14 @@ object Param {
     val SWAP: UInt = 3.U(width)
   }
 
-  /** TileLink Spec 1.8.1
-    * Table 27 Intent
+  /** TileLink Spec 1.8.1 Table 27 Intent
     */
   object Intent {
-    val PrefetchRead = 0.U(width)
-    val PrefetchWrite = 1.U(width)
+    val PrefetchRead: UInt = 0.U(width)
+    val PrefetchWrite: UInt = 1.U(width)
   }
 
-  /** TileLink Spec 1.8.1
-    * Table 31 Cap
+  /** TileLink Spec 1.8.1 Table 31 Cap
     */
   object Cap {
     val toT: UInt = 0.U(width)
@@ -44,8 +42,7 @@ object Param {
     val toN: UInt = 2.U(width)
   }
 
-  /** TileLink Spec 1.8.1
-    * Table 31 Grow
+  /** TileLink Spec 1.8.1 Table 31 Grow
     */
   object Grow {
     val NtoB: UInt = 0.U(width)
@@ -53,21 +50,19 @@ object Param {
     val BtoT: UInt = 2.U(width)
   }
 
-  /** TileLink Spec 1.8.1
-    * Table 31 Prune
+  /** TileLink Spec 1.8.1 Table 31 Prune
     */
   object Prune {
-    val TtoB = 0.U(width)
-    val TtoN = 1.U(width)
-    val BtoN = 2.U(width)
+    val TtoB: UInt = 0.U(width)
+    val TtoN: UInt = 1.U(width)
+    val BtoN: UInt = 2.U(width)
   }
 
-  /** TileLink Spec 1.8.1
-    * Table 31 Report
+  /** TileLink Spec 1.8.1 Table 31 Report
     */
   object Report {
-    val TtoT = 3.U(width)
-    val BtoB = 4.U(width)
-    val NtoN = 5.U(width)
+    val TtoT: UInt = 3.U(width)
+    val BtoB: UInt = 4.U(width)
+    val NtoN: UInt = 5.U(width)
   }
 }
