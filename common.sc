@@ -54,6 +54,10 @@ trait TileLinkModule extends TileLinkPublishModule {
     Agg() ++ chisel3PluginIvyDep()
   }
 
+  override def scalacOptions = T {
+    super.scalacOptions() ++ chisel3PluginJar().map(path => s"-Xplugin:${path.path}")
+  }
+
   override def ivyDeps = T {
     Agg() ++ chisel3IvyDep()
   }
