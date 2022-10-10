@@ -13,7 +13,10 @@ case class TLBundleParameter(
     "only AD/ABCDE channels is allowed."
   )
 
-  def bundle(): TLBundle = new TLBundle(copy())
+  def bundle(): TLBundle = Wire(new TLBundle(copy()))
+
+  def master(): TLBundle = new TLBundle(copy())
+  def slave(): TLBundle = Flipped(new TLBundle(copy()))
 
   def isTLC = b.isDefined
 }
