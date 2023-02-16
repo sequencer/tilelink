@@ -41,9 +41,6 @@ class TLBundle(val parameter: TLBundleParameter) extends Record {
       parameter.c.map(p => "c" -> DecoupledIO(p.bundle())) ++
       Seq("d" -> Flipped(DecoupledIO(parameter.d.bundle()))) ++
       parameter.e.map(p => "e" -> DecoupledIO(p.bundle()))
-
-  override def cloneType: this.type =
-    new TLBundle(parameter).asInstanceOf[this.type]
 }
 
 class TLChannelA(val parameter: TLChannelAParameter) extends Bundle {
